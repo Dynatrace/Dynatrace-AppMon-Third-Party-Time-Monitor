@@ -10,9 +10,9 @@ The plugin supports both HTTP and HTTPS.<br />
 	Port  (required) - http port to access the dynaTrace server rest interface<br />
 	username (required) - username to log into the dynaTrace server<br />
 	password (required) - password to log into the dynaTrace server<br />
-	Aggregation (required) - min/avg/max aggregation of measures<br />	
+	Aggregation (required) - min/avg/max aggregation of measures<br />
 	System Profile Filter (required) - System Profile Name<br />
-	Timeframe Filter (required) - Timeframe for tier times<br />	
+	Timeframe Filter (required) - Timeframe for tier times<br />
 	Filter by Business Transaction (optional) - yes/no<br />
 	Business Transaction Filter (optional) - Business Transaction name<br />
 <br />
