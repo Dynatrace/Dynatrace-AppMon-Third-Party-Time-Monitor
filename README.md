@@ -1,6 +1,6 @@
 # Dynatrace-Third-Party-Time-Monitor
 <br />
-The Third Party Time Monitor plugin queries a built-in Transaction Flow Dashboard to return response time, execution time, and count for third party calls captured via UEM.<br />
+The Third Party Time Monitor plugin queries a built-in Transaction Flow Dashboard to return response time and count for third party calls captured via UEM.<br />
 Metrics can also be filtered by business transaction.<br /> 
 The plugin supports both HTTP and HTTPS.<br />
 <br />
