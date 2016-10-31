@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!-- plugin.xml file written by dynaTrace Client 6.3.10 -->
+<plugin>
+  <extension point="com.dynatrace.diagnostics.pdk.pluginconfig" id="com.dynatrace.ThirdPartyMonitor" name="Third Party Monitor">
+    <information>
+      <category value="" />
+      <displayname value="Third Party Monitor" />
+      <description value="Monitors the response time and count of third party calls displayed in the ransaction flow.&#xA;A separate measure for each host will be created automatically," />
+      <supportlevel value="unsupported" />
+    </information>
+    <configuration>
+      <property key="protocol" label="Protocol" type="list" description="HTTP Protocol to access dynaTrace server" default="http">
+        <list>
+          <item value="http" />
+          <item value="https" />
+        </list>
+      </property>
+      <property key="httpPort" label="Port" type="long" description="Port to access dynaTrace server (default=8020)" default="8020" />
+      <property key="username" label="username" type="string" description="username to access dynaTrace server" default="" multiline="false" />
+      <property key="password" label="Password" type="password" description="password" default="" />
+      <property key="aggregation" label="Aggregation" type="list" description="min/avg/max" default="avg">
+        <list>
+          <item value="min" />
+          <item value="avg" />
+          <item value="max" />
+        </list>
+      </property>
+      <property key="systemProfileFilter" label="System Profile Filter" type="string" description="System Profile for which metrics should be retrieved" default="" multiline="false" />
+      <property key="timeframeFilter" label="Timeframe Filter" type="list" description="Timeframe Filter (last x minutes/seconds)" default="30 Seconds">
+        <list>
+          <item value="10 Seconds" />
+          <item value="30 Seconds" />
+          <item value="60 Seconds" />
+          <item value="5 Minutes" />
+          <item value="15 Minutes" />
+        </list>
+      </property>
+      <property key="btBoolean" label="Filter by Business Transaction?" type="boolean" description="Filter by Business Transaction?" default="false" />
+      <property key="btFilter" label="Business Transaction Filter" type="string" description="Business Transaction Filter" default="" multiline="false">
+        <visibility>
+          <rule key="btBoolean" value="true" />
+        </visibility>
+      </property>
+    </configuration>
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitor" id="com.dynatrace.ThirdPartyMonitor.monitor" name="Third Party Monitor">
+    <plugin configid="com.dynatrace.ThirdPartyMonitor" class="com.dynatrace.ThirdPartyMonitor" />
+  </extension>
+  <extension point="com.dynatrace.diagnostics.pdk.monitormetricgroup" id="com.dynatrace.ThirdPartyMonitor.monitor.thirdPartyTimer" name="Third Party Timer">
+    <metricgroup monitorid="com.dynatrace.ThirdPartyMonitor.monitor">
+      <metric defaultrate="purepath" name="Response Time" unit="ms" description="Response Time" />
+      <metric defaultrate="purepath" name="Count" unit="number" description="Number of calls to third party host(s)." />
+    </metricgroup>
+  </extension>
+</plugin>
